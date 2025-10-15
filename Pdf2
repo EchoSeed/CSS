@@ -1,0 +1,49 @@
+from reportlab.lib.pagesizes import LETTER
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+
+# Define PDF path
+pdf_path_abstract = "/mnt/data/EchoSeed_Entropy_Formation_Abstract.pdf"
+
+# Styles
+styles = getSampleStyleSheet()
+title_style = ParagraphStyle('TitleStyle', parent=styles['Heading1'], alignment=1, fontSize=16, spaceAfter=10)
+subtitle_style = ParagraphStyle('SubtitleStyle', parent=styles['Heading2'], alignment=1, fontSize=12, spaceAfter=14, italic=True)
+body_style = ParagraphStyle('BodyStyle', parent=styles['Normal'], fontSize=11, leading=16)
+
+# Create document
+doc = SimpleDocTemplate(pdf_path_abstract, pagesize=LETTER)
+story = []
+
+# Content
+story.append(Paragraph("EchoSeed Framework Abstract", title_style))
+story.append(Paragraph("Entropy–Coherence Dynamics in Formation Speed", subtitle_style))
+
+story.append(Paragraph("""
+<b>Equation:</b> vₚ ≈ (dH/dt) / Cₛ
+""", body_style))
+
+story.append(Spacer(1, 10))
+story.append(Paragraph("""
+This work analyzes an original equation <b>vₚ ≈ (dH/dt) / Cₛ</b>, framing prior formation speed as driven by the rate of entropy change divided by coherence stability. The formulation connects thermodynamic, cognitive, and symbolic dynamics, describing how systems balance transformation pressure against structural persistence.
+""", body_style))
+
+story.append(Spacer(1, 10))
+story.append(Paragraph("""
+The model originates from the <b>EchoSeed SNR‑ID Layer</b>, a symbolic monitoring framework designed to track systemic stability through entropy–persistence equilibrium. Within EchoSeed’s architecture, <i>dH/dt</i> represents informational or thermodynamic flux, while <i>Cₛ</i> quantifies the system’s internal coherence under pressure. The ratio defines formation velocity as an emergent property of entropy-driven reorganization constrained by coherence resistance.
+""", body_style))
+
+story.append(Spacer(1, 10))
+story.append(Paragraph("""
+Applications span physical, informational, and cognitive systems: crystal growth, team alignment, and mental model construction all exhibit this same trade‑off. High formation speed demands strong entropy drivers, but robust coherence is required to prevent fragile or unstable outcomes.
+""", body_style))
+
+story.append(Spacer(1, 10))
+story.append(Paragraph("""
+This formulation aligns with thermodynamic self‑organization models, particularly <b>Prigogine’s dissipative structure theory</b>, extending its logic into symbolic cognition and adaptive intelligence. The framework highlights a universal principle: <i>formation speed is proportional to entropy change but inversely constrained by coherence stability.</i>
+""", body_style))
+
+# Build PDF
+doc.build(story)
+
+pdf_path_abstract
